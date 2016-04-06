@@ -11,5 +11,6 @@ public class SimpleArraySum {
             sum += kb.nextInt();
         }
         System.out.println(sum);
+        kb.close();
     }
 }
