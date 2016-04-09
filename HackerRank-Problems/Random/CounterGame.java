@@ -29,6 +29,18 @@ public class CounterGame {
         boolean turn = true;
         while(!gameFinished) {
 
+            gameFinished = counter == 1;
+
+            if(!gameFinished) {
+                if(Integer.bitCount(counter) == 1) {
+                    counter >>>= 1;
+                }
+                else {
+                    
+                }
+                turn = !turn;
+            }
+            
         }
         return turn ? RICHARD : LOUISE;
     }
