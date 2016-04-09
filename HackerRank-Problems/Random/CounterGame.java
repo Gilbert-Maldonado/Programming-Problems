@@ -7,9 +7,10 @@ public class CounterGame {
     static final String LOUISE = "Louise";
     static final String RICHARD = "Richard";
 
-    public static void main(String [] args) {
-        Scanner kb = new Scanner(System.in);
+    public static void main(String [] args) throws IOException {
+        Scanner kb = new Scanner(new File("test.txt"));
         int n = kb.nextInt();
+        kb.nextLine();
         playGames(n, kb);
         kb.close();
     }
@@ -18,17 +19,17 @@ public class CounterGame {
     public static void playGames(int n, Scanner kb) {
 
         for(int test = 0; test < n; test++) {
-            long counter = kb.nextLong();
+            BigInteger counter = kb.nextLine();
             String winner = findWinner(counter);
             System.out.println(winner);
         }
     }
 
     // Each game that is played
-    public static String findWinner(long counter) {
+    public static String findWinner(BigInteger counter) {
 
         boolean gameFinished = false;
-        // Starts out with Richard's turn
+        // Starts out with LOUISE's turn
         boolean turn = true;
         while(!gameFinished) {
 
@@ -36,21 +37,24 @@ public class CounterGame {
 
             if(!gameFinished) {
                 // If N is a power of 2, reduce the counter by half of N
-                if(Long.bitCount(counter) == 1) {
+                if(BigInteger.bitCount(counter) == 1) {
                     counter >>>= 1;
                 }
                 else {
                     // If N is not power of 2, reduce the counter by the
                     // largest power of 2 less than N
-                    long allOnes = -1;
-                    long mask = Long.numberOfLeadingZeros(counter);
-                    allOnes >>>= mask + 1;
-                    counter &= allOnes;
+                    long mask = Long.highestOneBit(counter);
+                    mask = ~mask;
+                    counter &= mask;
                 }
-                turn = !turn;
+                // If the counter is not 1 then switch turns!
+                if(counter != 1) {
+                    turn = !turn;
+                }
+                
             }
             
         }
-        return turn ? RICHARD : LOUISE;
+        return turn ? LOUISE : RICHARD;
     }
 }
