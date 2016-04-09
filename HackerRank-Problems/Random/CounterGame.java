@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+// https://www.hackerrank.com/challenges/counter-game
 public class CounterGame {
 
     static final String LOUISE = "Louise";
@@ -13,6 +14,7 @@ public class CounterGame {
         kb.close();
     }
 
+    // Number of games played
     public static void playGames(int n, Scanner kb) {
 
         for(int test = 0; test < n; test++) {
@@ -22,6 +24,7 @@ public class CounterGame {
         }
     }
 
+    // Each game that is played
     public static String findWinner(long counter) {
 
         boolean gameFinished = false;
@@ -32,11 +35,17 @@ public class CounterGame {
             gameFinished = counter == 1;
 
             if(!gameFinished) {
-                if(Integer.bitCount(counter) == 1) {
+                // If N is a power of 2, reduce the counter by half of N
+                if(Long.bitCount(counter) == 1) {
                     counter >>>= 1;
                 }
                 else {
-                    
+                    // If N is not power of 2, reduce the counter by the
+                    // largest power of 2 less than N
+                    long allOnes = -1;
+                    long mask = Long.numberOfLeadingZeros(counter);
+                    allOnes >>>= mask + 1;
+                    counter &= allOnes;
                 }
                 turn = !turn;
             }
