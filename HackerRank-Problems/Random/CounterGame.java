@@ -19,7 +19,7 @@ public class CounterGame {
     public static void playGames(int n, Scanner kb) {
 
         for(int test = 0; test < n; test++) {
-            BigInteger counter = kb.nextLine();
+            BigInteger counter = new BigInteger(kb.nextLine());
             String winner = findWinner(counter);
             System.out.println(winner);
         }
@@ -38,7 +38,7 @@ public class CounterGame {
             if(!gameFinished) {
                 // If N is a power of 2, reduce the counter by half of N
                 if(BigInteger.bitCount(counter) == 1) {
-                    counter >>>= 1;
+                    counter.shiftRight(1);
                 }
                 else {
                     // If N is not power of 2, reduce the counter by the
@@ -48,7 +48,7 @@ public class CounterGame {
                     counter &= mask;
                 }
                 // If the counter is not 1 then switch turns!
-                if(counter != 1) {
+                if(counter == BigInteger.ONE) {
                     turn = !turn;
                 }
                 
