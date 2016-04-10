@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.math.*;
 
 // https://www.hackerrank.com/challenges/counter-game
 public class CounterGame {
@@ -33,27 +34,31 @@ public class CounterGame {
         boolean turn = true;
         while(!gameFinished) {
 
-            gameFinished = counter == 1;
+            gameFinished = counter == BigInteger.ONE;
 
             if(!gameFinished) {
                 // If N is a power of 2, reduce the counter by half of N
-                if(BigInteger.bitCount(counter) == 1) {
-                    counter.shiftRight(1);
+                if(counter.bitCount() == 1) {
+                    System.out.println("BEFORE: Number: " + counter.toString() + 
+                            ", BitCount: " + counter.bitCount());
+                    counter = counter.divide(new BigInteger("2"));
+                    System.out.println("AFTER: Number: " + counter.toString() + 
+                            ", BitCount: " + counter.bitCount());
                 }
                 else {
+                    System.out.println("hi");
                     // If N is not power of 2, reduce the counter by the
                     // largest power of 2 less than N
-                    long mask = Long.highestOneBit(counter);
-                    mask = ~mask;
-                    counter &= mask;
+                    String newBigInt = counter.toString();
+                    newBigInt = newBigInt.substring(1);
+                    System.out.println(newBigInt);
+                    counter = new BigInteger(newBigInt);
                 }
                 // If the counter is not 1 then switch turns!
                 if(counter == BigInteger.ONE) {
                     turn = !turn;
                 }
-                
             }
-            
         }
         return turn ? LOUISE : RICHARD;
     }
