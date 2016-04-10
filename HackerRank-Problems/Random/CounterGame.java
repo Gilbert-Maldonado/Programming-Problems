@@ -8,8 +8,8 @@ public class CounterGame {
     static final String LOUISE = "Louise";
     static final String RICHARD = "Richard";
 
-    public static void main(String [] args) throws IOException {
-        Scanner kb = new Scanner(new File("test.txt"));
+    public static void main(String [] args) {
+        Scanner kb = new Scanner(System.in);
         int n = kb.nextInt();
         kb.nextLine();
         playGames(n, kb);
@@ -34,28 +34,35 @@ public class CounterGame {
         boolean turn = true;
         while(!gameFinished) {
 
-            gameFinished = counter == BigInteger.ONE;
+            gameFinished = counter.equals(BigInteger.ONE);
 
             if(!gameFinished) {
                 // If N is a power of 2, reduce the counter by half of N
                 if(counter.bitCount() == 1) {
-                    System.out.println("BEFORE: Number: " + counter.toString() + 
-                            ", BitCount: " + counter.bitCount());
                     counter = counter.divide(new BigInteger("2"));
-                    System.out.println("AFTER: Number: " + counter.toString() + 
-                            ", BitCount: " + counter.bitCount());
                 }
                 else {
-                    System.out.println("hi");
-                    // If N is not power of 2, reduce the counter by the
-                    // largest power of 2 less than N
-                    String newBigInt = counter.toString();
+                    /* If N is not power of 2, reduce the counter by the
+                       largest power of 2 less than N
+                       Convert the BigInteger to bitstring */
+                    String newBigInt = counter.toString(2);
+                    /* If a bit string is '100101', then to reduce it by the 
+                    largest power of 2 less than N you simply take off the
+                    most significant bit; so it becomes '101' */
                     newBigInt = newBigInt.substring(1);
-                    System.out.println(newBigInt);
-                    counter = new BigInteger(newBigInt);
+                    int tempCount = 0;
+                    while(newBigInt.charAt(tempCount) == '0') {
+                        tempCount++;
+                    }
+                    newBigInt = newBigInt.substring(tempCount);
+                    
+                    /* Convert the bit string back to BigInteger, the 
+                       second parameter specifies which base the bitstring
+                       is in */
+                    counter = new BigInteger(newBigInt, 2);
                 }
                 // If the counter is not 1 then switch turns!
-                if(counter == BigInteger.ONE) {
+                if(!counter.equals(BigInteger.ONE)) {
                     turn = !turn;
                 }
             }
