@@ -10,9 +10,14 @@ public class TheCoinChangeProblem {
         int m = kb.nextInt();
         int[] coins = new int[m];
         fillCoinsArr(kb, coins);
+        findNumOfWays(n, coins);
         kb.close();
     }
 
+    public static void findNumOfWays(int n, int[] coins) {
+
+    }
+    
     public static void fillCoinsArr(Scanner kb, int[] coins) {
 
         for(int i = 0; i < coins.length; i++) {
