@@ -8,6 +8,8 @@ public class CommonChild {
         Scanner kb = new Scanner(System.in);
         String a = kb.nextLine();
         String b = kb.nextLine();
+        int[][] arr = new int[a.length][b.length];
+        
         kb.close();
 
     }
