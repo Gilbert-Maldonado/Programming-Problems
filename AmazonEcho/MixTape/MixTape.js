@@ -1,10 +1,8 @@
 /**
- * This sample demonstrates a simple skill built with the Amazon Alexa Skills Kit.
- * The Intent Schema, Custom Slots, and Sample Utterances for this skill, as well as
- * testing instructions are located at http://amzn.to/1LzFrj6
- *
- * For additional samples, visit the Alexa Skills Kit Getting Started guide at
- * http://amzn.to/1LGWsLG
+ * As of now, it's impossible to control Amazon prime music with the Alexa 
+ so I'll be looking at other API's to trying to figure it out. The purpose 
+ of this is when I say something like, "Alexa, Drop the bass," it will play 
+ some music. You can say alterations of that because of utterances.
  */
 
 // Route the incoming request based on type (LaunchRequest, IntentRequest,
