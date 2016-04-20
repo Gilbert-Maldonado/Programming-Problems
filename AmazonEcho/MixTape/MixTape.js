@@ -131,16 +131,10 @@ function startTheDrop(intent, session, callback) {
 
 }
 
-function createCurrentTask(currentTask, isChore) {
-    if(isChore) {
-        return {
-            currentChore: currentTask
-        };
-    } else {
-        return {
-            currentHabit: currentTask
-        };
-    }
+function createCurrentTask(currentTask) {
+    return {
+        currentChore: currentTask
+    };
 }
 
 
