@@ -131,6 +131,7 @@ function startTheDrop(intent, session, callback) {
 
 }
 
+// This obviously doesn't belong but keeping it as reference
 function createCurrentTask(currentTask) {
     return {
         currentChore: currentTask
