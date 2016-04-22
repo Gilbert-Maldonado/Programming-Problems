@@ -16,6 +16,7 @@ exports.handler = function (event, context) {
          * prevent someone else from configuring a skill that sends requests to this function.
          */
         
+        // Should take the key off soon, doing it later
         if (event.session.application.applicationId !== "amzn1.echo-sdk-ams.app.32cbec88-d08a-445b-aaed-db460a5cef80") {
              context.fail("Invalid Application ID");
         }
