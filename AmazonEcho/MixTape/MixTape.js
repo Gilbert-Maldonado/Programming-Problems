@@ -78,6 +78,8 @@ function onIntent(intentRequest, session, callback) {
 
     // Dispatch to your skill's intent handlers
     if ("Drop" === intentName) {
+        // This is to play the music, it calls the intent after
+        // hearing the correct utterances
         startTheDrop(intent, session, callback);
     } else if ("AMAZON.HelpIntent" === intentName) {
         getWelcomeResponse(callback);
