@@ -1,6 +1,7 @@
 /**
  * As of now, it's impossible to control Amazon prime music with the Alexa 
- so I'll be looking at other API's to trying to figure it out. The purpose 
+ so I'll be looking at other API's to trying to figure it out. Currently looking
+ at SoundCloud but not sure if that works. The purpose 
  of this is when I say something like, "Alexa, Drop the bass," it will play 
  some music. You can say alterations of that because of utterances.
  */
@@ -16,6 +17,7 @@ exports.handler = function (event, context) {
          * prevent someone else from configuring a skill that sends requests to this function.
          */
         
+        // Should take the key off, doing it later
         if (event.session.application.applicationId !== "amzn1.echo-sdk-ams.app.32cbec88-d08a-445b-aaed-db460a5cef80") {
              context.fail("Invalid Application ID");
         }
@@ -77,6 +79,8 @@ function onIntent(intentRequest, session, callback) {
 
     // Dispatch to your skill's intent handlers
     if ("Drop" === intentName) {
+        // This is to play the music, it calls the intent after
+        // hearing the correct utterances
         startTheDrop(intent, session, callback);
     } else if ("AMAZON.HelpIntent" === intentName) {
         getWelcomeResponse(callback);
@@ -131,6 +135,7 @@ function startTheDrop(intent, session, callback) {
 
 }
 
+// This obviously doesn't belong but keeping it as reference
 function createCurrentTask(currentTask) {
     return {
         currentChore: currentTask
