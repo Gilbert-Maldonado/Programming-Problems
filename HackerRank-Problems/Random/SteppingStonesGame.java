@@ -13,6 +13,11 @@ public class SteppingStonesGame {
 	}
 
 	public static void playGame(Scanner kb) {
+		long desiredLocation = kb.nextInt();
+		// n(n + 1) / 2 = sum
+		desiredLocation *= 2;
+		// sum = n^2 + n
 		
+
 	}
 }
