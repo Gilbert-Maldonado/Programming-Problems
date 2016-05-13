@@ -77,8 +77,8 @@ function onIntent(intentRequest, session, callback) {
     var intent = intentRequest.intent,
         intentName = intentRequest.intent.name;
 
-    // Dispatch to your skill's intent handlers
-    if ("Drop" === intentName) {
+    // Skill's intent name
+    if ("HowTo" === intentName) {
         // Execute how to skill
 
     } else if ("AMAZON.HelpIntent" === intentName) {
@@ -106,9 +106,9 @@ function getWelcomeResponse(callback) {
     // If we wanted to initialize the session to have some attributes we could add those here.
     var sessionAttributes = {};
     var cardTitle = "";
-    var speechOutput = "Dropping";     
+    var speechOutput = "";     
     // understood, they will be prompted again with this text.
-    var repromptText = "Dropping";
+    var repromptText = "";
     var shouldEndSession = false;
 
     callback(sessionAttributes,
