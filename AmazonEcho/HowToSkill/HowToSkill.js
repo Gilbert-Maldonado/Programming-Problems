@@ -4,11 +4,7 @@
 */
 
 /**
- * As of now, it's impossible to control Amazon prime music with the Alexa 
- so I'll be looking at other API's to trying to figure it out. Currently looking
- at SoundCloud but not sure if that works. The purpose 
- of this is when I say something like, "Alexa, Drop the bass," it will play 
- some music. You can say alterations of that because of utterances.
+    Alexa just came out with a "how to.." skill recently I think.
  */
 
 // Route the incoming request based on type (LaunchRequest, IntentRequest,
@@ -26,7 +22,6 @@ exports.handler = function (event, context) {
         if (event.session.application.applicationId !== "") {
              context.fail("Invalid Application ID");
         }
-        
 
         if (event.session.new) {
             onSessionStarted({requestId: event.request.requestId}, event.session);
@@ -84,9 +79,8 @@ function onIntent(intentRequest, session, callback) {
 
     // Dispatch to your skill's intent handlers
     if ("Drop" === intentName) {
-        // This is to play the music, it calls the intent after
-        // hearing the correct utterances
-        startTheDrop(intent, session, callback);
+        // Execute how to skill
+
     } else if ("AMAZON.HelpIntent" === intentName) {
         getWelcomeResponse(callback);
     } else if ("AMAZON.StopIntent" === intentName || "AMAZON.CancelIntent" === intentName) {
@@ -128,16 +122,6 @@ function handleSessionEndRequest(callback) {
     var shouldEndSession = true;
 
     callback({}, buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
-}
-
-function startTheDrop(intent, session, callback) {
-    var intentName = intent.name;
-    var speechOutput = "";
-    var repromptText = "";
-    var shouldEndSession = "";
-    var output = intentName.slots.TheBase;
-
-
 }
 
 // --------------- Helpers that build all of the responses -----------------------
