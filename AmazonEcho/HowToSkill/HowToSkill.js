@@ -106,9 +106,9 @@ function getWelcomeResponse(callback) {
     // If we wanted to initialize the session to have some attributes we could add those here.
     var sessionAttributes = {};
     var cardTitle = "";
-    var speechOutput = "";     
+    var speechOutput = "You can use this skill by saying, How to ";     
     // understood, they will be prompted again with this text.
-    var repromptText = "";
+    var repromptText = "Please ask a question. For example, you can say, How do I ";
     var shouldEndSession = false;
 
     callback(sessionAttributes,
