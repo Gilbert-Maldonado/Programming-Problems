@@ -4,7 +4,7 @@
 */
 
 /**
-    Alexa just came out with a "how to.." skill recently I think.
+    Alexa just came out with a "how to.." skill recently I think. Haven't thought what "how to" skill this will be yet.
  */
 
 // Route the incoming request based on type (LaunchRequest, IntentRequest,
