@@ -7,6 +7,7 @@ public class StringBuffer {
 
     public static void main(String [] args) {
 
+    	// TODO: getting an error
         StringBuffer hello = new StringBuffer();
         hello.append("Hello");
         StringBuffer b = new StringBuffer();
