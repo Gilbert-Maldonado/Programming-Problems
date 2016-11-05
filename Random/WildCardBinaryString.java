@@ -32,7 +32,7 @@ public class WildCardBinaryString {
 				printCombinationsHelper(binaryString, currentString + "0");
 				printCombinationsHelper(binaryString, currentString + "1");
 			} else {
-				currentString = currentString + binaryString.substring(currentStringLength, currentStringLength+1);
+				currentString += binaryString.substring(currentStringLength, currentStringLength+1);
 				printCombinationsHelper(binaryString, currentString);
 			}
 		}
