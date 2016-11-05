@@ -1,6 +1,14 @@
 import java.util.*;
-import java.io.*;
 
+/*
+	Interview question. Given a binary string produce the different combinations where '?' is swapped
+	with '0' or '1'.
+	Example:
+	"10?1?" ->	"10010"
+				"10011"
+				"10110"
+				"10111"
+*/
 public class WildCardBinaryString {
 	public static void main(String[] args) {
 		String binaryString = "101?100??";
